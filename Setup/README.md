@@ -27,7 +27,7 @@ sudo pip3 install python-pytun
 ```
 
 ```bash
-git clone [https://github.com/dpinedaa/5G_PQ.git](https://github.com/adwise-fiu/5G-PQ-TLS-Tunnel/)
+git clone https://github.com/adwise-fiu/5G-PQ-TLS-Tunnel/
 ```
 
 <!-- PHASE 2 -->
