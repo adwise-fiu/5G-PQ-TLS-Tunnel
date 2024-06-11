@@ -36,7 +36,7 @@ git clone https://github.com/dpinedaa/5G_PQ.git
 * Unzip Open5GS for the client and server vm
 
 ```bash
-cd 5G_PQ
+cd 5G-PQ-TLS-Tunnel
 unzip open5gs.zip
 ```
 
@@ -200,7 +200,7 @@ sudo apt update && sudo apt upgrade -y
 * Unzip UERANSIM 
 
 ```bash 
-cd ~/5G_PQ
+cd ~/5G-PQ-TLS-Tunnel
 unzip UERANSIM
 cd UERANSIM
 ```
@@ -337,7 +337,7 @@ This will create an interface in your machine called tun0 which Ip address is 10
 * Modify the config file using a new terminal 
 
 ```bash
-cd ~/5G_PQ/open5gs/open5gs/
+cd ~/5G-PQ-TLS-Tunnel/open5gs/open5gs/
 nano install/etc/open5gs/nrf.yaml
 ```
 
@@ -378,11 +378,11 @@ scp:
 **Expected output**
 
 ```output
-nrf@nrf:~/5G_PQ/open5gs/open5gs$ ./install/bin/open5gs-nrfd
+nrf@nrf:~/5G-PQ-TLS-Tunnel/open5gs/open5gs$ ./install/bin/open5gs-nrfd
 Open5GS daemon v2.4.9-268-g739cb59+
 
-04/29 16:52:16.303: [app] INFO: Configuration: '/home/nrf/5G_PQ/open5gs/open5gs/install/etc/open5gs/nrf.yaml' (../lib/app/ogs-init.c:126)
-04/29 16:52:16.303: [app] INFO: File Logging: '/home/nrf/5G_PQ/open5gs/open5gs/install/var/log/open5gs/nrf.log' (../lib/app/ogs-init.c:129)
+04/29 16:52:16.303: [app] INFO: Configuration: '/home/nrf/5G-PQ-TLS-Tunnel/open5gs/open5gs/install/etc/open5gs/nrf.yaml' (../lib/app/ogs-init.c:126)
+04/29 16:52:16.303: [app] INFO: File Logging: '/home/nrf/5G-PQ-TLS-Tunnel/open5gs/open5gs/install/var/log/open5gs/nrf.log' (../lib/app/ogs-init.c:129)
 04/29 16:52:16.311: [sbi] INFO: nghttp2_server() [http://10.0.0.1]:7777 (../lib/sbi/nghttp2-server.c:238)
 04/29 16:52:16.312: [app] INFO: NRF initialize...done (../src/nrf/app.c:31)
 ```
@@ -464,7 +464,7 @@ This will create an interface in your machine called tun0 which Ip address is 10
 **Expected output**
 
 ```output
-cp@cp:~/5G_PQ/vpn_over_tls-master/vpn_over_tls-master/src$ sudo python3 server/server.py
+cp@cp:~/5G-PQ-TLS-Tunnel/vpn_over_tls-master/vpn_over_tls-master/src$ sudo python3 server/server.py
 [sudo] password for cp:
 net.ipv4.ip_forward = 1
 ```
@@ -476,7 +476,7 @@ net.ipv4.ip_forward = 1
 * Open a New terminal 
 
 ```bash
-cd ~/5G_PQ/vpn_over_tls-master/vpn_over_tls-master/src
+cd ~/5G-PQ-TLS-Tunnel/vpn_over_tls-master/vpn_over_tls-master/src
 
 ```
 
@@ -542,7 +542,7 @@ Starting to read from tun device....
 ##### SCP
 
 ```bash
-cd ~/5G_PQ/open5gs/open5gs/
+cd ~/5G-PQ-TLS-Tunnel/open5gs/open5gs/
 nano install/etc/open5gs/scp.yaml
 ```
 
@@ -757,7 +757,7 @@ upf:
 * Start NF 
 
 ```bash
-cd ~/5G_PQ/open5gs
+cd ~/5G-PQ-TLS-Tunnel/open5gs
 ./install/bin/open5gs-upfd
 ```
 
@@ -765,7 +765,7 @@ cd ~/5G_PQ/open5gs
 * Modify all the configs using the command below
 
 ```bash
-cd ~/5G_PQ/open5gs/open5gs
+cd ~/5G-PQ-TLS-Tunnel/open5gs/open5gs
 find install/etc/open5gs -type f -exec sed -i 's/127\.0\.1\.10/10\.0\.0\.2/g' {} +
 find install/etc/open5gs -type f -exec sed -i 's/127\.0\.0\.10/10\.0\.0\.1/g' {} +
 find . -type f -exec sed -i 's/- ::1/#- ::1/g' {} +
@@ -879,7 +879,7 @@ In this case the gNB VM will have a TLS client and a TLS server. The client will
 * Change directory to vpn_over_tls-master
 
 ```bash
-cd ~/5G_PQ/vpn_over_tls-master/vpn_over_tls-master/src/
+cd ~/5G-PQ-TLS-Tunnel/vpn_over_tls-master/vpn_over_tls-master/src/
 ```
 
 * Modify the server config. In this case the Tunel Address has to be different. For this case, it will be 10.0.2.1
@@ -920,9 +920,9 @@ This will create an interface in your machine called tun0 which Ip address is 10
 **Expected output**
 
 ```output
-root@e3eaeed2d469:~/5G_PQ/vpn_over_tls-master/vpn_over_tls-master/src# python3 server/server.py &
+root@e3eaeed2d469:~/5G-PQ-TLS-Tunnel/vpn_over_tls-master/vpn_over_tls-master/src# python3 server/server.py &
 [1] 34
-root@e3eaeed2d469:~/5G_PQ/vpn_over_tls-master/vpn_over_tls-master/src# net.ipv4.ip_forward = 1
+root@e3eaeed2d469:~/5G-PQ-TLS-Tunnel/vpn_over_tls-master/vpn_over_tls-master/src# net.ipv4.ip_forward = 1
 ```
 
 
@@ -974,9 +974,9 @@ python3 client/client.py &
 **Expected output**
 
 ```output
-root@e3eaeed2d469:~/5G_PQ/vpn_over_tls-master/vpn_over_tls-master/src# python3 client/client.py &
+root@e3eaeed2d469:~/5G-PQ-TLS-Tunnel/vpn_over_tls-master/vpn_over_tls-master/src# python3 client/client.py &
 [2] 40
-root@e3eaeed2d469:~/5G_PQ/vpn_over_tls-master/vpn_over_tls-master/src# Sending authentication data...
+root@e3eaeed2d469:~/5G-PQ-TLS-Tunnel/vpn_over_tls-master/vpn_over_tls-master/src# Sending authentication data...
 Authentication succeeded...
 Got configuration packet...
 Starting to read from TLS socket...
@@ -996,14 +996,14 @@ Starting to read from tun device....
 * Unzip UERANSIM
 
 ```bash
-cd ~/5G_PQ
+cd ~/5G-PQ-TLS-Tunnel
 unzip UERANSIM.zip
 cd UERANSIM
 ```
 
 
 ```bash
-cd ~/5G_PQ/UERANSIM/config
+cd ~/5G-PQ-TLS-Tunnel/UERANSIM/config
 cp open5gs-gnb.yaml open5gs-gnb1.yaml
 nano open5gs-gnb1.yaml
 ```
@@ -1095,7 +1095,7 @@ In this case the UE VM will have a TLS client  only. The client will communicate
 * Change directory to vpn_over_tls-master
 
 ```bash
-cd ~/5G_PQ/vpn_over_tls-master/vpn_over_tls-master/src/
+cd ~/5G-PQ-TLS-Tunnel/vpn_over_tls-master/vpn_over_tls-master/src/
 ```
 
 
@@ -1142,9 +1142,9 @@ python3 client/client.py &
 **Expected output**
 
 ```output
-root@e3eaeed2d469:~/5G_PQ/vpn_over_tls-master/vpn_over_tls-master/src# python3 client/client.py &
+root@e3eaeed2d469:~/5G-PQ-TLS-Tunnel/vpn_over_tls-master/vpn_over_tls-master/src# python3 client/client.py &
 [2] 40
-root@e3eaeed2d469:~/5G_PQ/vpn_over_tls-master/vpn_over_tls-master/src# Sending authentication data...
+root@e3eaeed2d469:~/5G-PQ-TLS-Tunnel/vpn_over_tls-master/vpn_over_tls-master/src# Sending authentication data...
 Authentication succeeded...
 Got configuration packet...
 Starting to read from TLS socket...
@@ -1161,7 +1161,7 @@ Starting to read from tun device....
 * Unzip UERANSIM
 
 ```bash
-cd ~/5G_PQ
+cd ~/5G-PQ-TLS-Tunnel
 unzip UERANSIM.zip
 cd UERANSIM
 ```
@@ -1172,7 +1172,7 @@ cd UERANSIM
 ##### UE
 
 ```bash
-cd ~/5G_PQ/UERANSIM/config
+cd ~/5G-PQ-TLS-Tunnel/UERANSIM/config
  cp open5gs-ue.yaml open5gs-ue1.yaml
 nano open5gs-ue1.yaml
 ```
